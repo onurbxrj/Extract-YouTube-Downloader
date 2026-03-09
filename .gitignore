@@ -1,0 +1,43 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Node modules e Binários
+node_modules/
+dist/
+build/
+*.exe
+*.o
+*.a
+*.so
+ffmpeg-static/
+yt-dlp*
+extract-bridge/ffmpeg*
+
+# Extensões e Vídeos
+*.mp4
+*.mp4.part
+*.mkv
+*.webm
+*.f137
+*.f140
+*.ts
+*.ytdl
+downloads/
+
+# Mac/OSX
+.DS_Store
+
+# Chaves e Segredos
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.pem
+*.key
+aws-secret*
