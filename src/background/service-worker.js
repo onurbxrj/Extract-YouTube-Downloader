@@ -4,6 +4,7 @@
  * and manages download operations via Offscreen Document.
  */
 
+importScripts('../config.js');
 importScripts('../lib/itag-map.js');
 importScripts('./stream-tracker.js');
 
@@ -205,14 +206,14 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     }
 
     if (message.type === 'BRIDGE_DOWNLOAD') {
-        fetch('http://localhost:3010/download', {
+        fetch(EXT_CONFIG.BRIDGE_SERVER_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ url: message.url, quality: message.quality, outputDir: message.outputDir || '' })
         })
             .then(r => r.json())
             .then(data => sendResponse(data))
-            .catch(err => sendResponse({ success: false, error: 'Local server is offline. Run `npm start` in extract-bridge folder.' }));
+            .catch(err => sendResponse({ success: false, error: `Servidor não acessível. IP ou Porta ${EXT_CONFIG.BRIDGE_SERVER_URL} rejeitou a conexão.` }));
         return true;
     }
 
